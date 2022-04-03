@@ -1,0 +1,51 @@
+thoughts and ideas
+
+tried:
+-multiple paraphrasing
+-continues paraphrasing
+-single paraphrasing
+-...
+-grammar checking - Initially also a grammar checker was used, but later abandoned due to the paraphraser’s good design, where grammar was never really a problem.
+-find non hateful synonyms for hateful words/phrases
+
+
+ideas:
+-censoring bad words - the recipient still knows that you are angry at him but is not offended - its what tv shows do - bleep the bad w
+-in cases that are purely to offend someone - maybe not keep the meaning - but replace it with something nice (ex. I hate you -> I love you)
+-use the algorithms currently used for the evaluation process - hate speech detection ensemble method, similarity simCSE - or even combine them all
+-fine-tune the T5 model with the examples deemed acceptable by human evaluators (or automated eval.) - might not be enough of examples - adding those hand-translated by me - or crowdsource a task where people translate the examples themself and put that as input in the T5 
+-multi lingual: machine translation at the begining and end - or cross-lingual transfer (facebook laser)
+-add context ??
+-use additional metrics for assesing the quality: sentiment, grammar, ...
+
+to-do:
+-emoji converter : use libraries to convert to words (https://github.com/NeelShah18/emot)
+-sleng converter : because sleng words are unknown to the pretrained models, which weren't trained on such data
+-spelling correction - harder than it seems
+
+problems -> ways to solve them:
+- speed -> GPU, multiple instances running in parallel, faster paraphraser 
+
+
+
+questionable practices:
+ . thresholds (sim,hate) -> actually test them, objectively
+ . maybe higher thresholds for better translations, but them even more cases when there are no results -> lowering the threshold :: kinda already tried this
+ . paraphraser parameters -> i feel like it could be done better than just hardcoding values, plus the ones used were tested with the old algorithm
+ . why did you use specifically these algorithms - actually test them, objectively - not just because i feel like they are ok
+ . why spliting on 3 when analysing microworkers data
+ . toxCategory - do it better than just a linear uniform split - logical conclusion: more hateful comment must be more changed
+
+
+
+
+
+
+
+@thesis{DPhate2022,
+    author  = "Drejc Pesjak",
+    title   = "Hate speech paraphraser",
+    school  = "University of Ljubljana, Faculty of computer and information science",
+    year    = "2022",
+    type={Bachelor's Thesis}
+}

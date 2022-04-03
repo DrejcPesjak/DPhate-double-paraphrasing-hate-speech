@@ -1,0 +1,109 @@
+Fine-Tuning
+take the pre-trained BERT model, add an untrained layer of neurons on the end
+authors recommend only 2–4 epochs of training for fine-tuning BERT on a specific NLP task
+language inference, semantic similarity
+Google Colab and Kaggle offer free GPUs
+
+p-hacking (changing experiment till true): https://www.youtube.com/watch?v=42QuXLucH3Q
+statistics biases: https://www.youtube.com/watch?v=bVG2OQp6jEQ
+
+Because large-scale language models like GPT-2 do not distinguish fact from fiction, we don’t support use-cases that require the generated text to be true.
+ without any fine-tuning (zero-shot)
+
+The Corpus of Linguistic Acceptability (CoLA) dataset for single sentence classification. It’s a set of sentences labeled as grammatically correct or incorrect
+ https://nyu-mll.github.io/CoLA/
+
+Main two datasets for NLI:
+ - Stanford SNLI corpus: https://nlp.stanford.edu/projects/snli/
+ - MultiNLI corpus: nyu.edu/projects/bowman/multinli/
+     (models http://nlpprogress.com/english/natural_language_inference.html)
+
+differences between gpt2,elmo,bert: https://medium.com/@gauravghati/comparison-between-bert-gpt-2-and-elmo-9ad140cd1cda
+Drawbacks: GPT is its uni-directional nature — the model is only trained to predict the future left-to-right context.
+
+basic model architecture of various NLP tasks :
+https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf
+
+public GPT3 like model :  https://github.com/EleutherAI/gpt-neo
+
+why can the BERT-like models not generate text? It’s because they’re trained in a way that considers both the future and past context. 
+
+
+IMPORTANT:   gpt: input, output training for text generation : https://blog.paperspace.com/generating-text-summaries-gpt-2/
+https://blog.paperspace.com/generating-text-summaries-gpt-2/
+While training I concatenated sources (summaries) and targets (articles) in training examples with a separator token (<|sep|>), a delimiter in between, padded with the padding token (<|pad|>), and another delimiter, up to a context size of 512 and 1024 for GPT and GPT-2, respectively . This approach of adding a delimiter has been explored in the GPT paper for different NLP tasks, like textual entailment, etc. 
+
+text generation: https://jinglescode.github.io/2020/05/28/state-of-the-art-language-models-2020/
+
+huggingface model abbriviations dictionary:
+ssm - salient span masking
+nq - Natural Question dataset
+qg - question generation
+qa - Q&A, questions and answers/ question answering
+mmt - Metamorphic Testing
+
+don't delte emojies - replace them with their meaning (aka. smiley face, sad face)
+https://stackoverflow.com/questions/57744725/how-to-convert-emojis-emoticons-to-their-meanings-in-python
+https://github.com/NeelShah18/emot/blob/master/emot/emo_unicode.py
+
+git pull:
+https://github.com/ZJaume/paraphrasing.git
+https://github.com/krikyn/Strong-Paraphrase-Generation-2020.git
+
+HUGGINGFACE:
+-searches:
+	https://huggingface.co/models?search=phras
+-models:
+	https://huggingface.co/ramsrigouthamg/t5_paraphraser  :: question paraphrasing
+	https://huggingface.co/tuner007/pegasus_paraphrase    :: looks good
+	https://huggingface.co/prithivida/parrot_paraphraser_on_T5  :: usually outputs the same sentence,(control Adequacy, Fluency and Divr)
+	https://huggingface.co/seduerr/t5-pawraphrase
+	https://huggingface.co/ceshine/t5-paraphrase-quora-paws
+	https://huggingface.co/ramsrigouthamg/t5_sentence_paraphraser
+	https://huggingface.co/sentence-transformers/paraphrase-xlm-r-multilingual-v1
+	
+
+
+todo:
+ RapidAPI lists 7 fremium and commercial paraphrasers like QuillBot
+https://www.google.com/search?q=fine+tuning+gpt+in+real+time
+https://www.google.com/search?q=rephraseal+problem+nlp
+https://pytorch.org/hub/huggingface_pytorch-transformers/  :: pytorch trans
+
+rephrase:
+  -  datasets:  PARANMT-50M , Quora, Microsoft Research Paraphrase Corpus (MRPC) , 
+https://github.com/ZJaume/paraphrasing          :: some code
+https://paperswithcode.com/task/paraphrase-generation#code   ::articles list
+https://arxiv.org/pdf/2101.10579v1.pdf				  :: SynPG ,  needs automatization for parse trees
+https://www.aclweb.org/anthology/D19-5627.pdf         :: gen. eval
+https://arxiv.org/pdf/1711.00279.pdf                  :: RbM-SL  :: Li et al.
+https://github.com/shashiongithub/Split-and-Rephrase  :: dataset
+
+-----------------------------------------------------------------------------------------
+code examples:
+https://medium.com/@aniruddha.choudhury94/part-2-bert-fine-tuning-tutorial-with-pytorch-for-text-classification-on-the-corpus-of-linguistic-18057ce330e1
+https://github.com/shashiongithub/Split-and-Rephrase
+https://github.com/KristianMiok/BAN/blob/main/BAN_main.py
+https://github.com/t-davidson/hate-speech-and-offensive-language
+https://github.com/huggingface/transformers
+https://huggingface.co/gpt2?text=A+long+time+ago%2C+
+https://huggingface.co/models
+https://github.com/huggingface/transformers/blob/5bfcd0485ece086ebcbed2d008813037968a9e58/examples/run_glue.py#L128
+https://huggingface.co/transformers/custom_datasets.html    : fine-tuning
+https://huggingface.co/transformers/model_summary.html
+https://github.com/Maluuba/nlg-eval   :: evaluation of NLGeneration metrics
+
+-----------------------------------------------------------------------------------------
+models:
+https://huggingface.co/cross-encoder/nli-roberta-base
+https://github.com/pytorch/fairseq/tree/master/examples/roberta  : Use RoBERTa for sentence-pair classification tasks:
+https://huggingface.co/facebook/bart-large-mnli                 : NO classifiy into given topics, you can only do inference if you have two condradicting labels
+https://huggingface.co/models?search=nli
+
+https://huggingface.co/cardiffnlp/twitter-roberta-base-hate     : trained on Twitter data
+https://huggingface.co/monologg/koelectra-base-v3-hate-speech  : three classes. none,offensive,hate   ++++
+https://huggingface.co/Hate-speech-CNERG/bert-base-uncased-hatexplain  : also three classes
+https://huggingface.co/IMSyPP/hate_speech_slo  : slovenscina 
+
+https://github.com/uclanlp/synpg
+https://github.com/ZJaume/paraphrasing

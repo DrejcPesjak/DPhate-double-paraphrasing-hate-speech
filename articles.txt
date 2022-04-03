@@ -1,0 +1,42 @@
+hate speech detection:
+https://arxiv.org/abs/1801.04433
+https://arxiv.org/abs/2006.00998
+https://www.semanticscholar.org/paper/Automated-Hate-Speech-Detection-and-the-Problem-of-Davidson-Warmsley/8dd6a2c9c88c9b3465484228c93f4dcc11cfeab9
+https://www.semanticscholar.org/paper/Cross-lingual-Zero-and-Few-shot-Hate-Speech-Frozen-Stappen-Brunn/aec2688ddc0126a8267f6f362cca39d76646079e
+
+
+defining hate: http://ceur-ws.org/Vol-2517/T3-11.pdf
+hate study: https://www.semanticscholar.org/paper/%E2%80%98Breakthrough-Generation%E2%80%99-Haters%E2%80%94A-Pilot-Study-Jab%C5%82o%C5%84ska/44825023cc90145eb3d7e3c4ab16043868113662
+hate social media: https://www.semanticscholar.org/paper/A-Measurement-Study-of-Hate-Speech-in-Social-Media-Mondal-Silva/34dcfc790e63309a95c13f6c57134212d131a7d9
+counter-narratives: https://www.jugendundmedien.ch/fileadmin/PDFs/anderes/schwerpunkt_Radikalisierung/Impact-of-Counter-Narratives_ONLINE_1.pdf
+
+hatexplain: https://www.semanticscholar.org/paper/HateXplain%3A-A-Benchmark-Dataset-for-Explainable-Mathew-Saha/2a075155e72eb22f95b92efeef38a0b8e5708f5d
+
+
+like mine: 
+https://www.researchgate.net/publication/327840452_Neural_Network_Hate_Deletion_Developing_a_Machine_Learning_Model_to_Eliminate_Hate_from_Online_Comments_5th_International_Conference_INSCI_2018_St_Petersburg_Russia_October_24-26_2018_Proceedings
+	http://www.bernardjjansen.com/uploads/2/4/1/8/24188166/salminen2018_chapter_neuralnetworkhatedeletiondevel.pdf
+	(changing hateful comments - delete hate elements (text simplification)- delete hate words and those depending on it - dependency tree - hate words are identified from hate speech detector NN activations on certain tokens(words) 
+	 : old jan.2018 and not using generative approach)
+	 
+counter  narrative  generation (why something is hateful):
+https://arxiv.org/abs/2106.11783 (2021)
+ - A Counter Narrative (CN) is a non-negative response to a Hate Speech (HS), target-ing and contradicting extreme statements with fact-bound  arguments  or  alternative  viewpoints. Such strat-egy seeks to de-escalate the conversation, disen-gage from hateful sentiment and encourage mu-tual understanding through exchange of opinions.
+	https://arxiv.org/abs/2004.04216 (older same authors, less advanced, more dataset focused)
+https://arxiv.org/abs/2106.01625 (counterspeech - similar, modern)
+	- Hate:  Why we should resist it with free speech, not censorship (book)
+	- Countering  online  hatespeech (Unesco, book/guide)
+	- A benchmark dataset for learning to intervene in online hate speech (1909.04251 look below, "the only existing quality work on counterspeech generation")
+https://arxiv.org/pdf/1910.03270.pdf (2019, dataset CONAN)
+
+*hate speech intervention dataset: https://arxiv.org/pdf/1909.04251.pdf
+Counter speech (debate the haters): https://digitalsocietyschool.org/insight/combating-twitter-harassment-with-chatbots/
+chatbot (talks to hateful individuals): https://link.springer.com/chapter/10.1007/978-981-15-8395-7_2
+
+
+
+
+studies before have tried counter-narratives, which tell the user why his/her comment is inadaquit, 
+kinda implying / under the assumption that a computer could not edit the comment properly, only a human could
+
+at times when people get offended even faster, it is crusial to not just detect a hateful comment when it gets out, but to prevent them all together

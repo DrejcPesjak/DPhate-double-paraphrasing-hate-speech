@@ -1,0 +1,69 @@
+input:
+["You forgot to mention just how smart the jews are, next they will make a deadly virus to kill ALL people BUT the jews!!",
+"Queers are an abomination and need to be helped to go straight to Hell!",
+"The Palestinians are beasts walking on two legs.",
+"We have to kill all the Palestinians unless they are resigned to live here as slaves.",
+"Now that Trump is president, I'm going to shoot you and all the blacks I can find",
+"And isn’t it funny. I’ve got black accountants at Trump Castle and Trump Plaza. Black guys counting my money! I hate it!",
+"The only kind of people I want counting my money are short guys that wear yarmulkes every day.",
+"white males going up to women saying that it was now legal to grab them by the pussy",
+"I will punish all females for the crime of depriving me of sex. They have starved me of sex for my entire youth, and gave that pleasure to other men. In doing so, they took many years of my life away. I cannot kill every single female on earth, but I can deliver a devastating blow that will shake all of them to the core of their wicked hearts. (He wonders why women don’t want anything to do with him)",
+"Build a wall was chanted in our cafeteria at lunch. If you aren't born here, pack your bags was shouted in my own classroom. Get out spic was said in our halls.",
+"According to another submission, a number of students were suspended from Millersberg Area High School in Pennsylvania for harassing a Latina student chanting Trump and cheering when she ran out crying.",
+"Today a young Latino man in is 20's, and a co-worker of mine, was walking into work as a truck slowed down and two white men threw a bag of garbage onto him and yelled, you are going back to where you came from",
+"After the election: This is their punishment for 8 years of black people.",
+"A black truck with three white men pulled up to the red light. One of them yelled, Fuck your black life! The other two began to laugh. One began to chant Trump! as they drove away.",
+"Wipe out the Jews.",
+"The Jews are criminals and our enemies. Said by three year old girl.",
+"You shit Jew, I'm going to kill you. As he plunged a knife into the man.",
+"We’re going to take over all the political institutions of California. California is going to be a Hispanic state and anyone who doesn’t like it should leave. If they [Anglos] don’t like Mexicans, they ought to go back to Europe.",
+"There is plenty to blame whiteness for. There is no crime that whiteness has not committed against people of color. There is no crime that we have not committed even against ourselves. We must blame whiteness for the continuing patterns today that deny the rights of those outside of whiteness and which damage and pervert the humanity of those of us within it.",
+"The necessary re-education of Blacks and a possible solution of the racial crisis can begin, only when Blacks fully realize this central fact to their lives: the white man is their Bitter Enemy.",
+"laziness is a trait in blacks. It really is, I believe that. It’s not anything they can control.",
+"The Mexican government is much smarter, much sharper, much more cunning. They send the bad ones over because they don't want to pay for them. They don't want to take care of them",
+"Women are like grass, they need to be beaten/cut regularly.",
+"You just need to be raped.",
+"You stupid ugly fucking slut I’ll go to your flat and cut your fucking head off you inbred whore.",
+"Fucking faggots!",
+"You're Asian, right? When they see your eyes you are going to be deported. Said to 13 year old girl.",
+"Anonymous note: Your Muslim headscarf isn't allowed anymore. Why don’t you tie it around your neck & hang yourself with it, signed America!",
+"The true Negro does not want integration. ... He realizes his potential is far better among his own race.",
+"Gay folks would just as soon kill you as look at you",
+"The National Organization of Women is actually the National Organization of Witches.",
+"hurricanes and disasters and the 9/11 attacks are divine retribution for homos.",
+"Check your white privileges you cis white male!"]
+
+output:
+['In the next few years they will make a deadly virus to kill ALL people, but you forgot to mention that.']
+['They need to be helped to go straight to Hell.']
+['They are beasts walking on two legs.']
+['All the Palestinians must be killed unless they are resigned to live here.']
+["Now that Trump is president, I'm going to shoot you and all the blacks."]
+['It is funny that I have accountants at Trump Castle and Trump Plaza.']
+['Only short guys that wear yarmulkes can count my money.']
+['Women were told that it was now legal to grab them by the pussy.']
+['A devastating blow will shake all of them to the core of their wicked hearts, and it will make them angry.']
+["It was said in our halls that if you aren't born here, you should pack your bags."]
+['According to another submission, a number of students were suspended from Millersberg Area High School in Pennsylvania for harassing a Latina student.']
+["A young Latino man in is 20's and a co-worker of mine, was walking into work as a truck slowed down and two white men threw a bag of garbage onto him."]
+['After the election, they are punished for 8 years of black people.']
+['There was a black truck with three white men who pulled up to the red light and one of them began to laugh.']
+['Wipe out the Jews.']
+['A young girl says that the Jews are criminals.']
+['He plunged a knife into the man.']
+["If anyone doesn't like Mexicans, they should go back to Europe."]
+['There is no crime that has been committed against people of color and there is no crime that has been committed against ourselves.']
+['Only when Blacks realize this central fact to their lives, they will be able to solve the racial crisis.']
+["laziness is a trait in blacks, and it's not something they can control."]
+["They don't want to take care of the bad ones, so they send the bad ones over because they don't want to pay for them"]
+['The women need to be beaten/cut regularly.']
+['You just need to be raped.']
+['Will go to your flat and remove your head.']
+['Those are some really bad words']
+['A 13 year old girl was told that if they see your eyes, you will be deported.']
+['Not anymore, your Muslim headscarf is not allowed.']
+["His potential is better among his own race, but he doesn't want integration."]
+['They would kill you if you looked at.']
+['The National Organization of Women is actually the national organization of witches.']
+['The 9/11 attacks are divine retribution for homos.']
+["Check your white privileges, it's white male!"]
