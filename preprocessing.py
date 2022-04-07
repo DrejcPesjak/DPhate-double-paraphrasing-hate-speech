@@ -1,23 +1,8 @@
-import warnings
-warnings.filterwarnings("ignore")
+from detoxify import Detoxify
+modelD = Detoxify('original')
 
-
-import torch
-from transformers import PegasusForConditionalGeneration, PegasusTokenizer
-model_name = 'tuner007/pegasus_paraphrase'
-torch_device = 'cuda' if torch.cuda.is_available() else 'cpu'
-tokenizerP = PegasusTokenizer.from_pretrained(model_name)
-modelP = PegasusForConditionalGeneration.from_pretrained(model_name).to(torch_device)
-
-def get_response(input_text,num_return_sequences=20,num_beams=100, groups=25, diversityP=1.0):
-  batch = tokenizerP([input_text],truncation=True,padding='longest', return_tensors="pt").to(torch_device)
-  translated = modelP.generate(**batch,
-  								num_beams=num_beams, 
-  								num_return_sequences=num_return_sequences,
-  								num_beam_groups=groups,
-  								diversity_penalty=diversityP) 
-  tgt_text = tokenizerP.batch_decode(translated, skip_special_tokens=True)
-  return tgt_text
+from datasets import load_dataset
+dataset = load_dataset("hatexplain")
 
 def print_list(str_list):
 	if len(str_list)==0:
@@ -25,34 +10,6 @@ def print_list(str_list):
 	for p in str_list:
 		print('> ', end='')
 		print(p)
-
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
-model = SentenceTransformer('bert-base-nli-mean-tokens')
-from collections import deque
-
-from detoxify import Detoxify
-modelD = Detoxify('original')
-#modelD = Detoxify('original', device='cuda')
-
-import numpy as np
-import json
-
-values= [[ 20., 100.,  25.,   1.],
-		[ 30., 100.,  50.,   3.],
-		[ 40., 100.,  50.,   2.],
-		[ 40., 300., 150.,   2.]]
-
-def similarity(base, phrases):
-	sentences = deque(phrases)
-	sentences.appendleft(base)
-	sentences = list(sentences)
-	sentence_embeddings = model.encode(sentences)
-	sim = cosine_similarity([sentence_embeddings[0]],sentence_embeddings[1:])
-	return sim
-
-from datasets import load_dataset
-dataset = load_dataset("hatexplain")
 
 def majority(lst):
      n=list(set(lst))

@@ -35,6 +35,7 @@ questionable practices:
  . why did you use specifically these algorithms - actually test them, objectively - not just because i feel like they are ok
  . why spliting on 3 when analysing microworkers data
  . toxCategory - do it better than just a linear uniform split - logical conclusion: more hateful comment must be more changed
+ . in preprocessing add a random seed - for repeatable results
 
 
 
