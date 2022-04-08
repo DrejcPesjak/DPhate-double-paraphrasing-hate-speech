@@ -130,7 +130,7 @@ for i in range(len(values)):
 #graph analysis of parameter pairs from:
 	#goodN : how many of the new sentences were deemed good (tox<0.6, sim>0.6, gram>0.5)
 	#scr: average score (1-tox +sim +gram)/N of the acceptable new sentences (the higher the better, max==3.0)
-
+ # -> results can be seen in folder pictures: values.png, values2.png, numberG.png, numberG2.png, scoreG.png
 
 
 
