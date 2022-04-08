@@ -1,9 +1,15 @@
-from detoxify import Detoxify
-modelD = Detoxify('original')
+''' Preprocessing for the DPhate algorithm, 
+	it processes the Hatexplain dataset and labeles the examples with the Detoxify hate speech algorithm.
+	To run it, use:
+		python3 preprocessing.py
+'''
+import numpy as np
 
+#load the Hatexplain dataset
 from datasets import load_dataset
 dataset = load_dataset("hatexplain")
 
+#a prittier print of a list 
 def print_list(str_list):
 	if len(str_list)==0:
 		print('None')
@@ -11,22 +17,27 @@ def print_list(str_list):
 		print('> ', end='')
 		print(p)
 
+#get the majority vote
 def majority(lst):
      n=list(set(lst))
      n.reverse()
      return max(n, key=lst.count)
 
+#get majority vote for each example in Hatexplain dataset
 votes=[]
 for i in range(len(dataset['train'])):
      lst = dataset['train'][i]['annotators']['label']
      votes.append(majority(lst))
 
+#get only the examples with the majority vote labeled as hateful==0
 votesNP = np.array(votes)
 phrases=[]
 selected = np.where(votesNP==0)[0]
 for txtList in dataset['train'][selected]['post_tokens']:
      phrases.append(" ".join(txtList))
 
+
+#removes emojis, symbols, flags, chinese characters...
 import re
 def remove_emojis(data):
     emoj = re.compile("["
@@ -51,9 +62,11 @@ def remove_emojis(data):
                       "]+", re.UNICODE)
     return re.sub(emoj, '', data)
 
+#a list of 20 most popular male names and 20 most popular female names
 names = ['Wade', 'Dave', 'Seth', 'Ivan', 'Riley', 'Gilbert', 'Jorge', 'Dan', 'Brian', 'Roberto', 'Ramon', 'Miles', 'Liam', 'Nathaniel', 'Ethan', 'Lewis', 'Milton', 'Claude', 'Joshua', 'Glen', 'Harvey', 'Blake', 'Antonio', 'Connor', 'Julian', 'Aidan', 'Harold', 'Conner', 'Peter', 'Hunter', 'Eli', 'Alberto', 'Carlos', 'Shane', 'Aaron', 'Marlin', 'Paul', 'Ricardo', 'Hector', 'Alexis', 'Adrian', 'Kingston', 'Douglas', 'Gerald', 'Joey', 'Johnny', 'Charlie', 'Scott', 'Martin', 'Tristin',
 'Daisy', 'Deborah', 'Isabel', 'Stella', 'Debra', 'Beverly', 'Vera', 'Angela', 'Lucy', 'Lauren', 'Janet', 'Loretta', 'Tracey', 'Beatrice', 'Sabrina', 'Melody', 'Chrysta', 'Christina', 'Vicki', 'Molly', 'Alison', 'Miranda', 'Stephanie', 'Leona', 'Katrina', 'Mila', 'Teresa', 'Gabriela', 'Ashley', 'Nicole', 'Valentina', 'Rose', 'Juliana', 'Alice', 'Kathie', 'Gloria', 'Luna', 'Phoebe', 'Angelique', 'Graciela', 'Gemma', 'Katelynn', 'Danna', 'Luisa', 'Julie', 'Olive', 'Carolina', 'Harmony', 'Hanna', 'Anabelle']
 
+#replaces <user>,<percent>,<number> with actual values, and removes emojis
 def preprocess(phrase):
 	t = ['<user>','<percent>','<number>']
 	cont = [k in phrase for k in t]
@@ -82,19 +95,15 @@ for i in range(len(phrases)):
 
 
 phrasesNP = np.array(phrases)
-#np.savetxt('phrases.txt', phrasesNP, delimiter="\n", fmt="%s")
+np.savetxt('data-generated/phrases.txt', phrasesNP, delimiter="\n", fmt="%s")
 #phrasesNP = np.loadtxt('phrases.txt', dtype='str' , delimiter="\n")
-'''
-dataset2 = load_dataset("ethos", "binary")
-ix = np.where(np.array(dataset2['train']['label'])==1)
-hate = np.array(dataset2['train']['text'])[ix[0]]
-hate1 = list(hate)
-results = modelD.predict(hate1)
-tox = np.array(results['toxicity'])
-z = np.where(tox<0.5)[0]
-tox[z]=0.5
-div = ((tox-0.5)//0.125).astype(int)
-'''
+
+'''get only examples that the hate speech detector labels as hateful (toxicity>0.5), and determine the toxCategory (variable div) for each'''
+#load the hate speech detector
+from detoxify import Detoxify
+modelD = Detoxify('original')
+
+#only label 1000 examples at once, because you may run out of RAM
 margin = 1000
 tox = np.array([])
 for s in range(0,len(phrases),margin):
@@ -107,5 +116,22 @@ ix = np.where(tox>0.5)[0]
 div = ((tox[ix]-0.5)//0.125).astype(int)
 hate = phrasesNP[ix]
 
-#with open('data3570.json') as jf:
-#	data = json.load(jf)
+np.savetxt('data-generated/div.txt', div, delimiter="\n", fmt="%s")
+np.savetxt('data-generated/hate.txt', hate, delimiter="\n", fmt="%s")
+
+
+''' do the same for ethos dataset '''
+#dataset2 = load_dataset("ethos", "binary")
+#ix = np.where(np.array(dataset2['train']['label'])==1)
+#hate = np.array(dataset2['train']['text'])[ix[0]]
+#hate1 = list(hate)
+#results = modelD.predict(hate1)
+#tox = np.array(results['toxicity'])
+#z = np.where(tox<0.5)[0]
+#tox[z]=0.5
+#div = ((tox-0.5)//0.125).astype(int)
+#
+#np.savetxt('data-generated/div.txt', div, delimiter="\n", fmt="%s")
+#np.savetxt('data-generated/hate.txt', hate, delimiter="\n", fmt="%s")
+
+

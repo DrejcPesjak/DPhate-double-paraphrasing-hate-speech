@@ -172,3 +172,6 @@ if __name__ == "__main__":
 			fname = "dataset3/data" + str(i) + ".json"
 			with open(fname,'w') as fp:
 				json.dump(data,fp,indent=4)
+	
+	#with open('data3570.json') as jf:
+	#	data = json.load(jf)
